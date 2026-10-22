@@ -1,0 +1,6 @@
+interface:
+  display_name: "HMY Wiki Writing"
+  short_description: "Obsidian·Quartz 기반 HMY Wiki의 하드웨어 지식을 쓰고 연결하는 집필 스킬"
+  default_prompt: "$hmy-wiki-writing으로 이 기술문서를 개선해줘. 기존 문서와 실제 HMY 문법을 확인하고 원리·조건·관련 지식을 설명해줘."
+policy:
+  allow_implicit_invocation: true

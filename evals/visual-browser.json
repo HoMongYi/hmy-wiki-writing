@@ -1,0 +1,846 @@
+{
+  "status": "Passed",
+  "checks": [
+    {
+      "name": "HTTP AMD",
+      "status": "Passed"
+    },
+    {
+      "name": "rendered AMD",
+      "status": "Passed"
+    },
+    {
+      "name": "images AMD",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP CPU 캐시 계층",
+      "status": "Passed"
+    },
+    {
+      "name": "rendered CPU 캐시 계층",
+      "status": "Passed"
+    },
+    {
+      "name": "images CPU 캐시 계층",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP DDR CAS 지연시간",
+      "status": "Passed"
+    },
+    {
+      "name": "rendered DDR CAS 지연시간",
+      "status": "Passed"
+    },
+    {
+      "name": "images DDR CAS 지연시간",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP M.2 점검",
+      "status": "Passed"
+    },
+    {
+      "name": "rendered M.2 점검",
+      "status": "Passed"
+    },
+    {
+      "name": "images M.2 점검",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP M.2",
+      "status": "Passed"
+    },
+    {
+      "name": "rendered M.2",
+      "status": "Passed"
+    },
+    {
+      "name": "images M.2",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP Memory Training",
+      "status": "Passed"
+    },
+    {
+      "name": "rendered Memory Training",
+      "status": "Passed"
+    },
+    {
+      "name": "images Memory Training",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP NVMe",
+      "status": "Passed"
+    },
+    {
+      "name": "rendered NVMe",
+      "status": "Passed"
+    },
+    {
+      "name": "images NVMe",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP PCI Express",
+      "status": "Passed"
+    },
+    {
+      "name": "rendered PCI Express",
+      "status": "Passed"
+    },
+    {
+      "name": "images PCI Express",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP PCIe 대역폭 비교",
+      "status": "Passed"
+    },
+    {
+      "name": "rendered PCIe 대역폭 비교",
+      "status": "Passed"
+    },
+    {
+      "name": "images PCIe 대역폭 비교",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP SSD 인식 불량",
+      "status": "Passed"
+    },
+    {
+      "name": "rendered SSD 인식 불량",
+      "status": "Passed"
+    },
+    {
+      "name": "images SSD 인식 불량",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP TSMC",
+      "status": "Passed"
+    },
+    {
+      "name": "rendered TSMC",
+      "status": "Passed"
+    },
+    {
+      "name": "images TSMC",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP x86의 역사",
+      "status": "Passed"
+    },
+    {
+      "name": "rendered x86의 역사",
+      "status": "Passed"
+    },
+    {
+      "name": "images x86의 역사",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP 메모리 타이밍",
+      "status": "Passed"
+    },
+    {
+      "name": "rendered 메모리 타이밍",
+      "status": "Passed"
+    },
+    {
+      "name": "images 메모리 타이밍",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP 메인보드 데이터 경로",
+      "status": "Passed"
+    },
+    {
+      "name": "rendered 메인보드 데이터 경로",
+      "status": "Passed"
+    },
+    {
+      "name": "images 메인보드 데이터 경로",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP 반도체 설계와 위탁 생산",
+      "status": "Passed"
+    },
+    {
+      "name": "rendered 반도체 설계와 위탁 생산",
+      "status": "Passed"
+    },
+    {
+      "name": "images 반도체 설계와 위탁 생산",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP 저장장치 허브",
+      "status": "Passed"
+    },
+    {
+      "name": "rendered 저장장치 허브",
+      "status": "Passed"
+    },
+    {
+      "name": "images 저장장치 허브",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP 기술 예시",
+      "status": "Passed"
+    },
+    {
+      "name": "rendered 기술 예시",
+      "status": "Passed"
+    },
+    {
+      "name": "images 기술 예시",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP 블록 표본",
+      "status": "Passed"
+    },
+    {
+      "name": "rendered 블록 표본",
+      "status": "Passed"
+    },
+    {
+      "name": "images 블록 표본",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP 메인보드 데이터 경로",
+      "status": "Passed"
+    },
+    {
+      "name": "layout 메인보드 데이터 경로 360 light",
+      "status": "Passed"
+    },
+    {
+      "name": "content 메인보드 데이터 경로 360 light",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP CPU 캐시 계층",
+      "status": "Passed"
+    },
+    {
+      "name": "layout CPU 캐시 계층 360 light",
+      "status": "Passed"
+    },
+    {
+      "name": "content CPU 캐시 계층 360 light",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP PCIe 대역폭 비교",
+      "status": "Passed"
+    },
+    {
+      "name": "layout PCIe 대역폭 비교 360 light",
+      "status": "Passed"
+    },
+    {
+      "name": "content PCIe 대역폭 비교 360 light",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP DDR CAS 지연시간",
+      "status": "Passed"
+    },
+    {
+      "name": "layout DDR CAS 지연시간 360 light",
+      "status": "Passed"
+    },
+    {
+      "name": "content DDR CAS 지연시간 360 light",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP SSD 인식 불량",
+      "status": "Passed"
+    },
+    {
+      "name": "layout SSD 인식 불량 360 light",
+      "status": "Passed"
+    },
+    {
+      "name": "content SSD 인식 불량 360 light",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP 블록 표본",
+      "status": "Passed"
+    },
+    {
+      "name": "layout 블록 표본 360 light",
+      "status": "Passed"
+    },
+    {
+      "name": "content 블록 표본 360 light",
+      "status": "Passed"
+    },
+    {
+      "name": "theme 360 light",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP 메인보드 데이터 경로",
+      "status": "Passed"
+    },
+    {
+      "name": "layout 메인보드 데이터 경로 360 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "content 메인보드 데이터 경로 360 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP CPU 캐시 계층",
+      "status": "Passed"
+    },
+    {
+      "name": "layout CPU 캐시 계층 360 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "content CPU 캐시 계층 360 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP PCIe 대역폭 비교",
+      "status": "Passed"
+    },
+    {
+      "name": "layout PCIe 대역폭 비교 360 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "content PCIe 대역폭 비교 360 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP DDR CAS 지연시간",
+      "status": "Passed"
+    },
+    {
+      "name": "layout DDR CAS 지연시간 360 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "content DDR CAS 지연시간 360 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP SSD 인식 불량",
+      "status": "Passed"
+    },
+    {
+      "name": "layout SSD 인식 불량 360 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "content SSD 인식 불량 360 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP 블록 표본",
+      "status": "Passed"
+    },
+    {
+      "name": "layout 블록 표본 360 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "content 블록 표본 360 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "theme 360 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP 메인보드 데이터 경로",
+      "status": "Passed"
+    },
+    {
+      "name": "layout 메인보드 데이터 경로 768 light",
+      "status": "Passed"
+    },
+    {
+      "name": "content 메인보드 데이터 경로 768 light",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP CPU 캐시 계층",
+      "status": "Passed"
+    },
+    {
+      "name": "layout CPU 캐시 계층 768 light",
+      "status": "Passed"
+    },
+    {
+      "name": "content CPU 캐시 계층 768 light",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP PCIe 대역폭 비교",
+      "status": "Passed"
+    },
+    {
+      "name": "layout PCIe 대역폭 비교 768 light",
+      "status": "Passed"
+    },
+    {
+      "name": "content PCIe 대역폭 비교 768 light",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP DDR CAS 지연시간",
+      "status": "Passed"
+    },
+    {
+      "name": "layout DDR CAS 지연시간 768 light",
+      "status": "Passed"
+    },
+    {
+      "name": "content DDR CAS 지연시간 768 light",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP SSD 인식 불량",
+      "status": "Passed"
+    },
+    {
+      "name": "layout SSD 인식 불량 768 light",
+      "status": "Passed"
+    },
+    {
+      "name": "content SSD 인식 불량 768 light",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP 블록 표본",
+      "status": "Passed"
+    },
+    {
+      "name": "layout 블록 표본 768 light",
+      "status": "Passed"
+    },
+    {
+      "name": "content 블록 표본 768 light",
+      "status": "Passed"
+    },
+    {
+      "name": "theme 768 light",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP 메인보드 데이터 경로",
+      "status": "Passed"
+    },
+    {
+      "name": "layout 메인보드 데이터 경로 768 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "content 메인보드 데이터 경로 768 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP CPU 캐시 계층",
+      "status": "Passed"
+    },
+    {
+      "name": "layout CPU 캐시 계층 768 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "content CPU 캐시 계층 768 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP PCIe 대역폭 비교",
+      "status": "Passed"
+    },
+    {
+      "name": "layout PCIe 대역폭 비교 768 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "content PCIe 대역폭 비교 768 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP DDR CAS 지연시간",
+      "status": "Passed"
+    },
+    {
+      "name": "layout DDR CAS 지연시간 768 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "content DDR CAS 지연시간 768 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP SSD 인식 불량",
+      "status": "Passed"
+    },
+    {
+      "name": "layout SSD 인식 불량 768 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "content SSD 인식 불량 768 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP 블록 표본",
+      "status": "Passed"
+    },
+    {
+      "name": "layout 블록 표본 768 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "content 블록 표본 768 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "theme 768 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP 메인보드 데이터 경로",
+      "status": "Passed"
+    },
+    {
+      "name": "layout 메인보드 데이터 경로 1440 light",
+      "status": "Passed"
+    },
+    {
+      "name": "content 메인보드 데이터 경로 1440 light",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP CPU 캐시 계층",
+      "status": "Passed"
+    },
+    {
+      "name": "layout CPU 캐시 계층 1440 light",
+      "status": "Passed"
+    },
+    {
+      "name": "content CPU 캐시 계층 1440 light",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP PCIe 대역폭 비교",
+      "status": "Passed"
+    },
+    {
+      "name": "layout PCIe 대역폭 비교 1440 light",
+      "status": "Passed"
+    },
+    {
+      "name": "content PCIe 대역폭 비교 1440 light",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP DDR CAS 지연시간",
+      "status": "Passed"
+    },
+    {
+      "name": "layout DDR CAS 지연시간 1440 light",
+      "status": "Passed"
+    },
+    {
+      "name": "content DDR CAS 지연시간 1440 light",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP SSD 인식 불량",
+      "status": "Passed"
+    },
+    {
+      "name": "layout SSD 인식 불량 1440 light",
+      "status": "Passed"
+    },
+    {
+      "name": "content SSD 인식 불량 1440 light",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP 블록 표본",
+      "status": "Passed"
+    },
+    {
+      "name": "layout 블록 표본 1440 light",
+      "status": "Passed"
+    },
+    {
+      "name": "content 블록 표본 1440 light",
+      "status": "Passed"
+    },
+    {
+      "name": "theme 1440 light",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP 메인보드 데이터 경로",
+      "status": "Passed"
+    },
+    {
+      "name": "layout 메인보드 데이터 경로 1440 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "content 메인보드 데이터 경로 1440 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP CPU 캐시 계층",
+      "status": "Passed"
+    },
+    {
+      "name": "layout CPU 캐시 계층 1440 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "content CPU 캐시 계층 1440 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP PCIe 대역폭 비교",
+      "status": "Passed"
+    },
+    {
+      "name": "layout PCIe 대역폭 비교 1440 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "content PCIe 대역폭 비교 1440 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP DDR CAS 지연시간",
+      "status": "Passed"
+    },
+    {
+      "name": "layout DDR CAS 지연시간 1440 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "content DDR CAS 지연시간 1440 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP SSD 인식 불량",
+      "status": "Passed"
+    },
+    {
+      "name": "layout SSD 인식 불량 1440 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "content SSD 인식 불량 1440 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP 블록 표본",
+      "status": "Passed"
+    },
+    {
+      "name": "layout 블록 표본 1440 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "content 블록 표본 1440 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "theme 1440 dark",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP DDR CAS 지연시간",
+      "status": "Passed"
+    },
+    {
+      "name": "CAS input changes result",
+      "status": "Passed"
+    },
+    {
+      "name": "CAS baseline remains labelled",
+      "status": "Passed"
+    },
+    {
+      "name": "CAS rejects input ''",
+      "status": "Passed"
+    },
+    {
+      "name": "CAS rejects input '0'",
+      "status": "Passed"
+    },
+    {
+      "name": "CAS rejects input '16001'",
+      "status": "Passed"
+    },
+    {
+      "name": "CAS rejects input '5600.5'",
+      "status": "Passed"
+    },
+    {
+      "name": "CAS reset",
+      "status": "Passed"
+    },
+    {
+      "name": "SPA back has one control set",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP 메인보드 데이터 경로",
+      "status": "Passed"
+    },
+    {
+      "name": "diagram related edges",
+      "status": "Passed"
+    },
+    {
+      "name": "diagram avoids unintended intermediate nodes",
+      "status": "Passed",
+      "detail": []
+    },
+    {
+      "name": "diagram reset",
+      "status": "Passed"
+    },
+    {
+      "name": "diagram zoom keyboard and focus",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP SSD 인식 불량",
+      "status": "Passed"
+    },
+    {
+      "name": "diagnosis choices and action",
+      "status": "Passed"
+    },
+    {
+      "name": "diagnosis moves focus",
+      "status": "Passed"
+    },
+    {
+      "name": "selected diagnosis prints every node",
+      "status": "Passed"
+    },
+    {
+      "name": "diagnosis previous",
+      "status": "Passed"
+    },
+    {
+      "name": "diagnosis full flow",
+      "status": "Passed"
+    },
+    {
+      "name": "diagnosis print actions",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP PCIe 대역폭 비교",
+      "status": "Passed"
+    },
+    {
+      "name": "plot values and conditions",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP 블록 표본",
+      "status": "Passed"
+    },
+    {
+      "name": "comparison differences",
+      "status": "Passed"
+    },
+    {
+      "name": "comparison selects visible groups",
+      "status": "Passed"
+    },
+    {
+      "name": "comparison prints all groups",
+      "status": "Passed"
+    },
+    {
+      "name": "comparison restores groups",
+      "status": "Passed"
+    },
+    {
+      "name": "PCIe supported inputs",
+      "status": "Passed"
+    },
+    {
+      "name": "PCIe reset",
+      "status": "Passed"
+    },
+    {
+      "name": "image slider keyboard",
+      "status": "Passed"
+    },
+    {
+      "name": "image credits retained",
+      "status": "Passed"
+    },
+    {
+      "name": "signal semantic fallback",
+      "status": "Passed"
+    },
+    {
+      "name": "guide keeps safety visible",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP DDR CAS 지연시간",
+      "status": "Passed"
+    },
+    {
+      "name": "no-JS CAS data",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP SSD 인식 불량",
+      "status": "Passed"
+    },
+    {
+      "name": "no-JS complete diagnosis",
+      "status": "Passed"
+    },
+    {
+      "name": "HTTP 블록 표본",
+      "status": "Passed"
+    },
+    {
+      "name": "no-JS image originals",
+      "status": "Passed"
+    },
+    {
+      "name": "page errors",
+      "status": "Passed",
+      "detail": []
+    }
+  ],
+  "required_pages": 18,
+  "page_errors": [],
+  "limits": "Chromium fixtures only; actual Obsidian app, other browsers, screen readers and physical touch devices are separate."
+}

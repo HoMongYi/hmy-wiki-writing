@@ -1,0 +1,33 @@
+{
+  "kind": "model run with an executed preservation gate; not edited by package author",
+  "cases": [
+    {
+      "id": "H02",
+      "markdown": "---\ntitle: NVMe\naliases: [NVM Express]\ntags: [hardware, storage]\nsources: [https://nvmexpress.org/specifications/]\n---\n# NVMe\n\nNVMe는 호스트 소프트웨어가 비휘발성 저장장치와 통신하는 방식을 정의한다. PC의 PCIe SSD에서는 운영체제의 드라이버와 SSD 컨트롤러가 명령과 완료 정보를 교환한다. NVMe는 PCIe SSD에만 쓰이는 규격이 아니다. NVM Express 규격은 Base, Command Set, Transport로 나뉘며, PCIe 외에도 RDMA와 TCP 같은 전송 방식에서 사용된다.\n\nM.2는 모듈의 형태와 연결 규격을 다루며 NVMe와 같은 뜻이 아니다. [[PCI Express]]와 [[M.2]]는 서로 다른 층위의 규격이다.\n\n| 구분 | 다루는 대상 |\n| --- | --- |\n| NVMe | 호스트 소프트웨어와 비휘발성 저장장치가 명령을 교환하는 규격 |\n| PCIe | PC에서 NVMe SSD와 호스트를 연결하는 전송 경로의 한 종류 |\n| M.2 | 저장장치 모듈의 크기와 커넥터 형상·키를 정하는 규격 |\n\n## 호스트와 컨트롤러의 명령 흐름\n\nNVMe에서 호스트는 운영체제와 장치 드라이버를 통해 명령을 제출하고, SSD 컨트롤러는 명령을 처리한 뒤 완료 정보를 돌려준다. 기본 흐름을 설명하는 NVMe Revision 1.0e 규격에서는 호스트가 Submission Queue(SQ)에 명령을 기록하고 doorbell로 새 항목이 있음을 컨트롤러에 알린다. SQ는 순환 버퍼로 동작하며, 컨트롤러는 완료 정보를 Completion Queue(CQ)에 기록한다.\n\n완료 항목에는 어떤 SQ에서 제출한 명령인지 나타내는 SQID, 명령을 구분하는 CID, 명령 상태를 나타내는 Status가 포함된다. 호스트는 이 값을 사용해 완료된 요청과 결과를 식별한다. 이 기본 흐름은 규격 동작을 설명하며, 특정 SSD의 처리량이나 지연 시간을 뜻하지는 않는다.\n\n## PCIe 경로와 슬롯 구성\n\nPC의 PCIe SSD에서는 NVMe 명령과 데이터가 PCIe 경로를 통해 오간다. 메인보드 설계에 따라 M.2 슬롯이 CPU에 직접 연결되거나 칩셋을 거쳐 연결될 수 있으므로 슬롯마다 호스트까지의 경로가 같다고 볼 수 없다. 한 플랫폼의 연결 구성을 다른 메인보드에 그대로 적용할 수도 없다.\n\n슬롯의 외형 길이만으로 실제 PCIe 레인 폭을 알 수는 없다. 메인보드 설명서에서 각 슬롯의 연결 방식과 레인 구성, 다른 장치와 공유하는 자원을 확인해야 한다. NVMe라는 이름이나 M.2 슬롯의 물리적 모양만으로 실제 연결 폭과 경로를 판단할 수 없는 이유다.\n\n## M.2 SSD 호환성\n\nM.2 SSD를 장착할 때는 모듈의 키와 길이뿐 아니라 슬롯이 지원하는 연결 방식도 맞아야 한다. M.2 SATA SSD는 SATA 연결을, M.2 NVMe SSD는 PCIe 연결과 NVMe 통신을 사용하므로, 커넥터에 물리적으로 들어간다는 사실만으로 호환이 보장되지는 않는다. 슬롯에 따라 SATA와 PCIe 중 한쪽만 지원하거나 둘 다 지원할 수 있다.\n\n호환성을 확인할 때는 SSD의 인터페이스가 SATA인지 NVMe인지 확인한 뒤, 메인보드 설명서에서 해당 M.2 슬롯이 지원하는 프로토콜과 모듈 길이를 대조한다. 키 모양은 물리적 결합 조건을 보여 주지만 지원 프로토콜까지 단독으로 보증하지 않는다. PCIe 장치의 실제 경로와 레인 구성도 슬롯별 설명을 기준으로 확인해야 한다.\n\n## 참고 링크\n\n- [NVM Express 규격](https://nvmexpress.org/specifications/)\n- [NVMe Revision 1.0e 기본 동작 규격](https://nvmexpress.org/wp-content/uploads/2013/04/NVM_10e_specification.pdf)\n- [Microsoft NVMe 완료 항목 구조](https://learn.microsoft.com/en-us/windows/win32/api/nvme/ns-nvme-nvme_completion_entry)\n- [Intel PCIe 연결 경로 설명](https://www.intel.com/content/www/us/en/gaming/resources/what-is-pcie-4-and-why-does-it-matter.html)\n- [Intel 메인보드 확장 슬롯 안내](https://www.intel.com/content/www/us/en/gaming/resources/how-to-choose-a-motherboard.html)\n- [Kingston M.2 SSD FAQ](https://www.kingston.com/en/ssd/ssd-faq)\n",
+      "report": {
+        "evaluation": "Deep Improvement 후보에 호스트·컨트롤러·SQ/CQ 흐름, PCIe 경로와 슬롯 폭, M.2의 물리적·프로토콜 호환성을 반영했다. 기존 Frontmatter, Wikilink와 참고 링크를 후보 Markdown에 유지했다.",
+        "source_scope": "제공된 NVMe 출처 자료의 주장 범위만 사용했다. Revision 1.0e 설명은 해당 리비전의 기본 동작으로 표시했고, 최신 전체 규격의 세부 사항이나 측정값은 추가하지 않았다."
+      }
+    }
+  ],
+  "resources_read": [
+    "SKILL.md",
+    "references/obsidian-quartz.md",
+    "references/technical-accuracy.md",
+    "references/hardware-specifications.md",
+    "references/writing-style.md",
+    "references/frontmatter.md",
+    "references/wikilinks-backlinks.md",
+    "references/review-checklist.md",
+    "workflows/topic-deepening.md",
+    "evals/inputs.json",
+    "evals/sources.json",
+    "examples/fixtures/before/NVMe.md",
+    "scripts/check-preservation.py"
+  ],
+  "gate_result": {
+    "status": "Passed",
+    "errors": [],
+    "limits": "Text preservation only; meaning, destination validity and rendering need separate checks."
+  }
+}

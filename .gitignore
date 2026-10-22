@@ -1,0 +1,17 @@
+.local/
+HANDOFF.md
+.env
+.env.*
+*.pem
+*.key
+*.log
+__pycache__/
+node_modules/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+private/
+drafts/
+backups/
+evals/runs/

@@ -1,0 +1,155 @@
+{
+  "sources": [
+    {
+      "id": "nvme-overview",
+      "url": "https://nvmexpress.org/specifications/",
+      "verified_claim": "NVMe는 PCIe·RDMA·TCP 등 여러 전송 방식에 사용되며 Base·Command Set·Transport 규격으로 나뉜다. 2026-10-22 확인한 소개는 2026-08-04 공개된 2.4 규격군을 안내한다.",
+      "scope": "규격 소개 본문. 최신 전체 PDF 기능 검증 아님.",
+      "checked": "2026-10-22",
+      "status": "Passed"
+    },
+    {
+      "id": "nvme-queues",
+      "url": "https://nvmexpress.org/wp-content/uploads/2013/04/NVM_10e_specification.pdf",
+      "verified_claim": "호스트가 SQ에 명령을 놓고 컨트롤러가 CQ에 완료를 놓는다. SQ는 순환 버퍼이며 doorbell로 새 명령을 알린다.",
+      "scope": "Revision 1.0e, 1.4 Theory of Operation, pp.9–10. 기본 동작의 역사적 규격.",
+      "checked": "2026-10-22",
+      "status": "Passed"
+    },
+    {
+      "id": "nvme-completion",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/nvme/ns-nvme-nvme_completion_entry",
+      "verified_claim": "SQID와 CID로 완료된 명령을 식별하며 Status는 명령 상태를 나타낸다.",
+      "scope": "구조체 멤버 설명.",
+      "checked": "2026-10-22",
+      "status": "Passed"
+    },
+    {
+      "id": "pcie-path",
+      "url": "https://www.intel.com/content/www/us/en/gaming/resources/what-is-pcie-4-and-why-does-it-matter.html",
+      "verified_claim": "CPU 직결과 칩셋 경유 경로가 다르다.",
+      "scope": "특정 예시 DMI 폭을 모든 플랫폼에 일반화하지 않음.",
+      "checked": "2026-10-22",
+      "status": "Passed"
+    },
+    {
+      "id": "pcie-slots",
+      "url": "https://www.intel.com/content/www/us/en/gaming/resources/how-to-choose-a-motherboard.html",
+      "verified_claim": "확장 슬롯과 실제 연결 폭·공유 자원은 구분된다.",
+      "scope": "Expansion Slots. 현재 제품 전체의 수치 근거로 사용하지 않음.",
+      "checked": "2026-10-22",
+      "status": "Passed"
+    },
+    {
+      "id": "m2",
+      "url": "https://www.kingston.com/en/ssd/ssd-faq",
+      "verified_claim": "M.2 키·길이의 맞춤과 SATA/PCIe 프로토콜 지원이 함께 필요하다.",
+      "scope": "M.2 keys, B+M, length, SATA-only 질문.",
+      "checked": "2026-10-22",
+      "status": "Passed"
+    },
+    {
+      "id": "timing",
+      "url": "https://www.kingston.com/en/blog/gaming/cas-latency-cl-ram-timing-explained",
+      "verified_claim": "CAS 주기 수와 전송률로 CAS 구간 시간을 계산한다.",
+      "scope": "6000 MT/s·CL30 계산 10 ns. 문서의 total latency 표현을 시스템 전체 지연으로 확대하지 않음.",
+      "checked": "2026-10-22",
+      "status": "Passed"
+    },
+    {
+      "id": "training",
+      "url": "https://www.asus.com/support/faq/1050298/",
+      "verified_claim": "메모리 변경 등의 조건 후 Training 중 화면이 없을 수 있고 강제 종료를 피하도록 안내한다.",
+      "scope": "ASUS 해당 안내 범위. 특정 대기 시간을 모든 시스템에 적용하지 않음.",
+      "checked": "2026-10-22",
+      "status": "Passed"
+    },
+    {
+      "id": "disk",
+      "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-server/backup-and-storage/troubleshoot-disk-management",
+      "verified_claim": "탐색기 미표시와 디스크 관리 상태를 구분한다. 기존 데이터가 있는 RAW 디스크를 포맷하지 않는다.",
+      "scope": "Disks that are missing or not initialized.",
+      "checked": "2026-10-22",
+      "status": "Passed"
+    },
+    {
+      "id": "amd-founded",
+      "url": "https://www.amd.com/en/corporate.html",
+      "verified_claim": "AMD는 1969년 설립됐다.",
+      "scope": "About AMD 본문.",
+      "checked": "2026-10-22",
+      "status": "Passed"
+    },
+    {
+      "id": "amd-products",
+      "url": "https://www.amd.com/en/products.html",
+      "verified_claim": "Ryzen·Radeon·EPYC·Instinct·Versal·Kria 등의 제품군을 구분한다.",
+      "scope": "제품 분류. 최신 SKU 성능 비교는 하지 않음.",
+      "checked": "2026-10-22",
+      "status": "Passed"
+    },
+    {
+      "id": "ati",
+      "url": "https://ir.amd.com/financial-information/sec-filings/content/0001193125-06-217735/dex991.htm",
+      "verified_claim": "ATI 인수 완료 발표는 2006-10-25다.",
+      "scope": "공시 페이지 제출일 2006-10-30과 본문 사건일 구별.",
+      "checked": "2026-10-22",
+      "status": "Passed"
+    },
+    {
+      "id": "xilinx",
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1047/amd-completes-acquisition-of-xilinx",
+      "verified_claim": "2020-10-27 발표, 2022-02-14 인수 완료. FPGA·적응형 SoC 사업 결합.",
+      "scope": "인수 완료 발표 본문.",
+      "checked": "2026-10-22",
+      "status": "Passed"
+    },
+    {
+      "id": "8086",
+      "url": "https://www.intel.com/content/www/us/en/history/virtual-vault/articles/the-8086-and-the-ibm-pc.html",
+      "verified_claim": "8086은 1978년, IBM PC는 1981년 8088을 사용했다.",
+      "scope": "기업 역사 원문. 홍보성 수식어는 채택하지 않음.",
+      "checked": "2026-10-22",
+      "status": "Passed"
+    },
+    {
+      "id": "opteron",
+      "url": "https://ir.amd.com/financial-information/sec-filings/content/0001193125-03-020249/dex991.htm",
+      "verified_claim": "AMD Opteron 출시일 2003-04-22.",
+      "scope": "2003년 2분기 공식 발표 Highlights.",
+      "checked": "2026-10-22",
+      "status": "Passed"
+    },
+    {
+      "id": "cross-license",
+      "url": "https://ir.amd.com/financial-information/sec-filings/content/0001193125-09-236705/dex102.htm",
+      "verified_claim": "AMD·Intel은 효력일 2009-11-11의 특허 교차 라이선스 계약을 공개했다.",
+      "scope": "당시 계약 서두와 정의. 현재 권리·유효성 전체의 법적 검토 아님.",
+      "checked": "2026-10-22",
+      "status": "Passed"
+    },
+    {
+      "id": "tsmc-foundry",
+      "url": "https://www.tsmc.com/english/aboutTSMC",
+      "verified_claim": "1987년 설립, 고객 제품의 제조에 집중하는 pure-play foundry 사업.",
+      "scope": "기업 소개 본문. 특정 고객 제품의 생산 공정·계약은 추론하지 않음.",
+      "checked": "2026-10-22",
+      "status": "Passed"
+    },
+    {
+      "id": "amd-fabless",
+      "url": "https://www.amd.com/en/corporate/corporate-responsibility/supply-chain-responsibility.html",
+      "verified_claim": "AMD는 fabless 기업으로 제조 공급사와 협력한다.",
+      "scope": "Advancing Climate Action Through Supply Chain Collaboration 본문. 고객·공급사별 계약 범위 추론 없음.",
+      "checked": "2026-10-22",
+      "status": "Passed"
+    }
+  ],
+  "unavailable": [
+    {
+      "url": "https://nvmexpress.org/wp-content/uploads/NVM-Express-Base-Specification-Revision-2.1-2024.08.05-Ratified.pdf",
+      "status": "Needs verification",
+      "reason": "과거 Base 2.1 PDF 열람 실패; HTTP 403. 최신판이 아니며 내용 검증 완료로 집계하지 않음."
+    }
+  ]
+}

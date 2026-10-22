@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 250" role="img" aria-labelledby="t d">
+<title id="t">CPU direct and chipset paths</title><desc id="d">Conceptual paths without product specific lane counts</desc>
+<rect width="720" height="250" rx="12" fill="#f7f7f5"/>
+<g fill="#e2edf2" stroke="#326b83" stroke-width="2"><rect x="30" y="90" width="140" height="65"/><rect x="300" y="25" width="170" height="65"/><rect x="300" y="155" width="170" height="65"/><rect x="550" y="155" width="140" height="65"/></g>
+<g stroke="#326b83" stroke-width="3" fill="none"><path d="M170 110 L240 110 L240 57 L300 57"/><path d="M170 135 L240 135 L240 187 L300 187"/><path d="M470 187 L550 187"/></g>
+<g font-family="sans-serif" font-size="18" text-anchor="middle" fill="#173344"><text x="100" y="130">CPU</text><text x="385" y="65">PCIe device</text><text x="385" y="195">Chipset</text><text x="620" y="195">Device</text></g>
+</svg>

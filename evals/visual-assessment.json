@@ -1,0 +1,94 @@
+{
+  "scope": "Authoring on a fixed local HMY source snapshot, separate from the earlier basic evaluation.",
+  "original_model_cases": [
+    {
+      "id": "V01",
+      "status": "Passed",
+      "basis": "One allowed sentence changed; main-agent light preservation gate Passed."
+    },
+    {
+      "id": "V02",
+      "status": "Passed",
+      "basis": "Native diagnosis/save/roundtrip passed; data safety and observation/causation reviewed."
+    },
+    {
+      "id": "V03",
+      "status": "Passed",
+      "basis": "Native explorer and independent CAS calculation passed; real app invocation not claimed."
+    },
+    {
+      "id": "V04",
+      "status": "Passed",
+      "basis": "No data invented; Review Only kept output separate."
+    },
+    {
+      "id": "V05",
+      "status": "Passed",
+      "basis": "Unimplemented hmy-chart, formula JavaScript and physical layout rejected against actual source."
+    },
+    {
+      "id": "V06",
+      "status": "Passed",
+      "basis": "Final native plot and independently recalculated 1.00/2.00/3.94/7.88/15.75 values passed. Writer reported a failed intermediate expectation; kept separately."
+    },
+    {
+      "id": "V07",
+      "status": "Passed",
+      "basis": "Provided old-install restriction respected; static formula/table used, no interactive claim."
+    },
+    {
+      "id": "V08",
+      "status": "Passed",
+      "basis": "Main-agent deep preservation gate Passed; metadata, link, footnote and original image preserved."
+    },
+    {
+      "id": "V09",
+      "status": "Passed",
+      "basis": "Measured signal and generic PSU pin procedure rejected; conceptual scope preserved."
+    },
+    {
+      "id": "V10",
+      "status": "Passed",
+      "basis": "Legacy compatibility and independent verification stages explained without bulk rewrite."
+    },
+    {
+      "id": "V11",
+      "status": "Passed",
+      "basis": "Unconfirmed rights not treated as permission; aspect-ratio/load conditions distinguished."
+    },
+    {
+      "id": "V12",
+      "status": "Failed",
+      "basis": "Reader text included a sentence about information supplied to the writer and the decision not to add values. This is editing context, not reader-facing technical content."
+    }
+  ],
+  "retries": [
+    {
+      "id": "V12",
+      "status": "Passed",
+      "basis": "After a focused style clarification, the new output states CPU-dependent technical limits and omits the prior editing-context sentence. Same writer session; not a blind independent run."
+    }
+  ],
+  "intermediate_failure": {
+    "id": "V06",
+    "status": "Failed",
+    "basis": "Writer reported wrong initial Gen1/2 expectations 1.25/2.5. Complete stderr and script text were not retained; do not treat the summarized command as a complete execution transcript. The final returned numbers were independently recalculated by the main agent."
+  },
+  "control_limit": "The no-skill baseline read a changing HMY implementation; it is retained as observation, not a controlled score comparison or evidence of statistical improvement.",
+  "not_run": [
+    "Fresh Codex CLI invocation",
+    "Claude Code model invocation",
+    "automatic skill selection",
+    "actual Obsidian Reading/Live/GUI on these fixtures"
+  ],
+  "review": "Main agent inspected every returned candidate and used preservation/native checks independently; final package review is separate.",
+  "verifier_review": {
+    "findings_fixed": [
+      "required rendered fixture inventory",
+      "nonempty explicit model cases and IDs",
+      "explicit model asset root and Needs verification"
+    ],
+    "verification": "Original false successes reproduced; missing page and malformed inputs now rejected, unspecified assets report Needs verification, existing asset with explicit root passes.",
+    "regression_tests": 22
+  }
+}

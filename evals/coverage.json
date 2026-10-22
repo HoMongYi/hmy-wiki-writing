@@ -1,0 +1,159 @@
+{
+  "1": {
+    "behavior": "정확한 문장 보존",
+    "cases": [
+      "H01",
+      "H12"
+    ],
+    "method": "원문 대조"
+  },
+  "2": {
+    "behavior": "한국어 개선",
+    "cases": [
+      "H01"
+    ],
+    "method": "명사화 문장 검토"
+  },
+  "3": {
+    "behavior": "기술 조건",
+    "cases": [
+      "H02",
+      "H03",
+      "H05"
+    ],
+    "method": "근거·의미 검토"
+  },
+  "4": {
+    "behavior": "공식 규격 최신성",
+    "cases": [
+      "H09"
+    ],
+    "method": "접근 한계 보고"
+  },
+  "5": {
+    "behavior": "이론과 실측",
+    "cases": [
+      "H03",
+      "H12"
+    ],
+    "method": "수치 주장 검토"
+  },
+  "6": {
+    "behavior": "모든 Frontmatter 보존",
+    "cases": [
+      "H01",
+      "H02"
+    ],
+    "method": "원문 일치·mutation"
+  },
+  "7": {
+    "behavior": "실제 Wikilink",
+    "cases": [
+      "H02",
+      "H04",
+      "H08"
+    ],
+    "method": "native resolver"
+  },
+  "8": {
+    "behavior": "aliases·앵커",
+    "cases": [
+      "H04"
+    ],
+    "method": "native resolver·Quartz"
+  },
+  "9": {
+    "behavior": "본문 설명 유지",
+    "cases": [
+      "H02",
+      "H08"
+    ],
+    "method": "분리 검토"
+  },
+  "10": {
+    "behavior": "HMY schema",
+    "cases": [
+      "H05",
+      "H07",
+      "H10"
+    ],
+    "method": "native parse·GUI validation"
+  },
+  "11": {
+    "behavior": "블록 절제",
+    "cases": [
+      "H01",
+      "H02",
+      "H03"
+    ],
+    "method": "분리 검토"
+  },
+  "12": {
+    "behavior": "기업 관계",
+    "cases": [
+      "H06",
+      "H07"
+    ],
+    "method": "공식 근거"
+  },
+  "13": {
+    "behavior": "기업 문서 집중",
+    "cases": [
+      "H06"
+    ],
+    "method": "무관 절차 제거"
+  },
+  "14": {
+    "behavior": "관찰과 원인",
+    "cases": [
+      "H05"
+    ],
+    "method": "단정·안전 검토"
+  },
+  "15": {
+    "behavior": "허브 구조",
+    "cases": [
+      "H08"
+    ],
+    "method": "학습·진단 흐름"
+  },
+  "16": {
+    "behavior": "이미지·각주·참고 링크",
+    "cases": [
+      "H01",
+      "H02"
+    ],
+    "method": "원문·native·렌더"
+  },
+  "17": {
+    "behavior": "내부 지침 분리",
+    "cases": [
+      "H05",
+      "H08",
+      "H11"
+    ],
+    "method": "본문·보고 구분"
+  },
+  "18": {
+    "behavior": "URL·Markdown 구조",
+    "cases": [
+      "H01",
+      "H12"
+    ],
+    "method": "diff·렌더"
+  },
+  "19": {
+    "behavior": "공개 범위",
+    "cases": [
+      "H11"
+    ],
+    "method": "수정 기록·범위 보고"
+  },
+  "20": {
+    "behavior": "전체 조사 완료의 정직성",
+    "cases": [
+      "H11"
+    ],
+    "method": "12개 중 3개 범위 보고"
+  }
+}

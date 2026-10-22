@@ -1,0 +1,57 @@
+[
+  {
+    "id": "CAS",
+    "url": "https://www.kingston.com/en/blog/gaming/cas-latency-cl-ram-timing-explained",
+    "read": "2026-10-22",
+    "scope": "CL cycles and CL*2000/MT/s calculation, 6000 CL30 example, other timings; formula is interpreted only as the CAS interval, not total CPU memory access or a product measurement."
+  },
+  {
+    "id": "PCIE",
+    "url": "https://edc.intel.com/content/www/us/en/design/products/platforms/details/raptor-lake-s/13th-generation-core-processors-datasheet-volume-1-of-2/002/pci-express-architecture/",
+    "read": "2026-10-22",
+    "scope": "Historical 13th Gen Core datasheet volume 1, revision 002: 2.5/5/8/16/32 GT/s and encoding; not a claim about the latest datasheet or every platform."
+  },
+  {
+    "id": "PCIE-direction",
+    "url": "https://www.microchip.com/en-us/solutions/data-centers-and-computing/data-center-solutions/technologies/pci-express-technology",
+    "read": "2026-10-22",
+    "scope": "Per-lane rates versus x16 bidirectional aggregate. The prose contains a Gbps/GBps inconsistency; no ambiguous headline number is copied. Examples calculate one-direction decimal GB/s independently."
+  },
+  {
+    "id": "PATH",
+    "url": "https://www.intel.com/content/www/us/en/gaming/resources/what-is-pcie-4-and-why-does-it-matter.html",
+    "read": "2026-10-22",
+    "scope": "CPU direct versus chipset path and sharing concept. Platform-specific DMI widths and dated performance statements are not generalized."
+  },
+  {
+    "id": "CACHE",
+    "url": "https://www.intel.com/content/www/us/en/support/articles/000027820/processors/intel-xeon-processors.html",
+    "read": "2026-10-22",
+    "scope": "Different Xeon cache hierarchies and inclusive/non-inclusive changes. No universal capacity or latency is inferred."
+  },
+  {
+    "id": "CACHE-shared",
+    "url": "https://intel.github.io/optimization-zone/hardware/HWPrefetchTuning/",
+    "read": "2026-10-22",
+    "scope": "Intel E-core module private L1 and shared L2, July 2026 page; used as a counterexample to universally private L2, not all CPUs."
+  },
+  {
+    "id": "PS-ON",
+    "url": "https://edc.intel.com/content/www/us/en/design/ipla/software-development-platforms/client/platforms/alder-lake-desktop/atx-version-3-0-multi-rail-desktop-platform-power-supply-design-guide/2.0/2.1a/ps-on-required/",
+    "read": "2026-10-22",
+    "scope": "Active-low control of main outputs, conceptual phases only; no voltage/time thresholds, wiring diagram or physical testing procedure."
+  },
+  {
+    "id": "PWR-OK",
+    "url": "https://edc.intel.com/content/www/us/en/design/ipla/software-development-platforms/client/platforms/alder-lake-desktop/atx-version-3-0-multi-rail-desktop-platform-power-supply-design-guide/2.0/2.1a/pwr-ok-required/",
+    "read": "2026-10-22",
+    "scope": "Power-good state for output conditions, not CPU/DRAM fault diagnosis; no measured waveform or timing claims."
+  },
+  {
+    "id": "PCIE-encoding",
+    "url": "https://www.intel.com.tw/content/dam/www/public/us/en/documents/datasheets/200-series-chipset-pch-datasheet-vol-1.pdf",
+    "read": "2026-10-22",
+    "scope": "Intel 200/Z370 PCH datasheet, document 335192-004, December 2019. Gen1/2 8b/10b, Gen3 128b/130b, theoretical maximum bandwidth formula and Gen3 x4 example. Historical encoding/model evidence; not current platform support.",
+    "access_limit": "Intel archived Physical Layer HTML redirected to an inaccessible 404 page; no content claim is based on that failed URL."
+  }
+]

@@ -1,0 +1,255 @@
+{
+  "cases": [
+    {
+      "id": "V01",
+      "markdown": "---\ntitle: 연결 확인\ncustom: {owner: user}\n---\n# 연결 확인\n\n연결 방식을 확인하려면 매뉴얼을 참조해야 한다.\n\n[[PCI Express]]와 [[M.2]]를 함께 읽는다.\n",
+      "report": "요청한 문장만 자연스럽게 고쳤다. Frontmatter, 제목, 두 Wikilink와 나머지 원문은 그대로 보존했다.",
+      "read_files": [
+        "SKILL.md",
+        "evals/visual-inputs.json",
+        "references/writing-style.md",
+        "references/frontmatter.md"
+      ],
+      "checks": [
+        "Passed — 원문과 후보를 수동 대조해 Frontmatter·제목·링크 보존 및 한 문장만 변경된 것을 확인했다.",
+        "Not run — 자동 보존 검사."
+      ]
+    },
+    {
+      "id": "V02",
+      "markdown": "# SSD가 탐색기에 표시되지 않을 때\n\n파일 탐색기에 표시되지 않는 것만으로 SSD나 파일 시스템의 고장을 확정할 수는 없다. 연결 경로, 펌웨어의 장치 인식, Windows의 디스크·볼륨 상태를 차례로 확인한다. 기존 데이터가 있다면 초기화·포맷·새 볼륨 생성·복구 쓰기를 하지 않는다. 아래 분기는 확인 경로를 고르는 안내이며 실제 점검 결과를 대신하지 않는다.\n\n```hmy-diagnosis\nsteps:\n  - id: route\n    depth: 0\n    text: 연결 경로를 확인할 수 있나요?\n    detail: 제품 설명서와 장착 형태를 확인한다. M.2는 폼팩터이며 SATA 또는 PCIe 지원 여부를 따로 확인한다.\n    choices:\n      - label: SATA\n        target: sata_fw\n      - label: M.2 PCIe/NVMe\n        target: pcie_fw\n      - label: USB 외장 케이스\n        target: usb_os\n      - label: RAID/VMD\n        target: raid_fw\n      - label: 모름\n        target: unknown_path\n  - id: sata_fw\n    depth: 1\n    text: UEFI 저장 장치 목록에 SSD가 표시되나요?\n    yes: os_disk\n    no: sata_absent\n  - id: pcie_fw\n    depth: 1\n    text: UEFI의 NVMe 또는 저장 장치 정보에 SSD가 표시되나요?\n    yes: os_disk\n    no: pcie_absent\n  - id: usb_os\n    depth: 1\n    text: Windows 디스크 관리에 외장 SSD가 표시되나요?\n    yes: volume_state\n    no: usb_absent\n  - id: raid_fw\n    depth: 1\n    text: RAID/VMD 관리 화면에서 해당 디스크 또는 배열을 확인할 수 있나요?\n    yes: os_disk\n    no: raid_stop\n  - id: unknown_path\n    depth: 1\n    text: 연결 방식이 확인되지 않습니다.\n    detail: 케이블·외장 케이스·메인보드 모델과 설명서에서 연결 경로를 먼저 확인한다.\n    action: 경로가 확인될 때까지 BIOS 저장 모드나 RAID 설정을 바꾸지 않는다.\n  - id: os_disk\n    depth: 2\n    text: Windows 디스크 관리에 같은 디스크와 기존 볼륨이 표시되나요?\n    yes: volume_state\n    no: os_controller\n  - id: volume_state\n    depth: 3\n    text: 기존 파일 시스템이 정상으로 표시되고 드라이브 문자만 없나요?\n    yes: assign_letter\n    no: preserve_data\n  - id: assign_letter\n    depth: 4\n    text: 기존 볼륨이 맞고 드라이브 문자만 누락된 경우\n    detail: 디스크 모델·용량과 기존 파티션을 대조해 대상 볼륨을 확인한다.\n    action: 기존 데이터가 중요하면 먼저 읽기 복사본을 확보한다. 대상 볼륨과 파일 시스템이 분명한 경우에만 드라이브 문자 할당을 검토한다.\n  - id: preserve_data\n    depth: 4\n    text: 기존 볼륨이 없거나 RAW·초기화 필요·알 수 없는 상태입니다.\n    action: 초기화, 포맷, 새 볼륨 생성, 파일 시스템 복구 쓰기를 중단한다. 데이터가 중요하면 전원을 끄고 복구 전문 업체에 상담한다.\n  - id: os_controller\n    depth: 3\n    text: 펌웨어에서는 보였지만 Windows 디스크 관리에는 없거나, 양쪽 모두 보이지 않습니다.\n    detail: 장치 관리자에서 저장 컨트롤러·USB 브리지 오류와 필요한 드라이버를 확인한다. RAID/VMD 모드 변경은 기존 OS와 배열 접근을 바꿀 수 있다.\n    action: 데이터가 있는 디스크의 RAID/VMD 모드, 배열 구성, 파티션을 임의로 바꾸지 않는다. 모델별 설명서와 현재 설정을 기록해 지원을 받는다.\n  - id: sata_absent\n    depth: 2\n    text: UEFI에서 SATA SSD를 찾지 못합니다.\n    detail: 메인보드 설명서에서 SATA 포트 비활성화, M.2 장착 시 포트 공유, 해당 포트 지원을 확인한다.\n    action: 케이블을 점검하려면 PC를 완전히 끄고 전원을 분리한다. 데이터가 중요하면 반복 재연결이나 초기화 작업을 하지 않는다.\n  - id: pcie_absent\n    depth: 2\n    text: UEFI에서 M.2 PCIe/NVMe SSD를 찾지 못합니다.\n    detail: 슬롯의 NVMe 지원, 모듈 길이, CPU·칩셋 연결과 포트 공유 조건을 메인보드 설명서에서 확인한다.\n    action: 재장착이 필요하면 전원을 완전히 끄고 모델별 절차를 따른다. 확신이 없거나 데이터가 중요하면 서비스 점검을 받는다.\n  - id: usb_absent\n    depth: 2\n    text: Windows에서 USB 외장 SSD를 찾지 못합니다.\n    action: 데이터를 쓰거나 초기화하지 말고 알려진 정상 USB 포트와 케이블, 외장 케이스를 하나씩 교차 확인한다. 다른 PC에서도 읽기 전용으로 인식 여부를 확인하고 반복 실패 시 복구 상담을 받는다.\n  - id: raid_stop\n    depth: 2\n    text: RAID/VMD 관리 화면에서 디스크나 배열을 확인하지 못합니다.\n    action: RAID/VMD 모드 전환, 배열 생성·초기화, 디스크 포맷을 하지 않는다. 현재 설정과 모델을 기록하고 데이터 복구 또는 제조사 지원을 받는다.\n```\n",
+      "report": "저장된 데이터 보호 조건을 본문과 관련 조치에 두고, 연결 경로부터 OS 볼륨 상태까지 분기하도록 구성했다. 분기 ID와 대상은 실제 지원되는 hmy-diagnosis 문법을 사용했다.",
+      "read_files": [
+        "SKILL.md",
+        "evals/visual-inputs.json",
+        "references/troubleshooting.md",
+        "references/hmy-blocks.md",
+        "references/interactive-documentation.md",
+        "references/visual-explanations.md",
+        "workflows/visual-documentation.md",
+        "HMY/packages/hmy-wiki-core/src/structured.ts",
+        "HMY/packages/hmy-wiki-core/src/visualModels.ts",
+        "HMY/packages/hmy-wiki-core/src/render.ts",
+        "HMY/obsidian-plugin/src/blockValidation.ts",
+        "HMY/obsidian-plugin/src/editing.ts"
+      ],
+      "checks": [
+        "Passed — 네이티브 파싱·HTML 렌더·Obsidian 편집 가능성 검사·분기 대상 저장 검증·직렬화 후 재파싱 왕복.",
+        "Not run — 실제 Obsidian 앱 조작, Quartz 빌드·브라우저 렌더, 실제 장치 진단."
+      ]
+    },
+    {
+      "id": "V03",
+      "markdown": "# DDR CAS 구간 이해하기\n\nCAS 지연 구간은 CL 주기 수와 메모리 데이터 전송률로 계산한다. DDR의 데이터 전송률은 MT/s로, 대응 클럭은 그 절반인 MHz로 표시한다. 이 계산은 `CL × 2000 ÷ 전송률(MT/s)`이며 결과 단위는 ns다.\n\n| 전송률 | CL | CAS 구간 계산 | 결과 |\n| --- | ---: | --- | ---: |\n| 5600 MT/s | 30 | 30 × 2000 ÷ 5600 | 10.71 ns |\n| 6000 MT/s | 30 | 30 × 2000 ÷ 6000 | 10.00 ns |\n| 6000 MT/s | 36 | 36 × 2000 ÷ 6000 | 12.00 ns |\n| 6400 MT/s | 32 | 32 × 2000 ÷ 6400 | 10.00 ns |\n| 6400 MT/s | 40 | 40 × 2000 ÷ 6400 | 12.50 ns |\n\n전송률이 높아져도 CL이 함께 커지면 CAS 구간이 같거나 길어질 수 있다. 같은 계산값은 전체 메모리 접근 시간이나 시스템 성능이 같다는 뜻이 아니다. 행 상태, 다른 타이밍, 메모리 컨트롤러와 대기열을 포함한 경로는 이 계산에 들어가지 않는다. 탐색기의 기본 입력은 6000 MT/s·CL30이며 입력 허용 범위는 계산기 범위일 뿐 메모리의 지원·안정성 범위가 아니다.\n\n```hmy-explorer\nkind: ddr-cas\ntitle: DDR CAS 구간 탐색\ndescription: 전송률과 CL을 바꾸어 CL × 2000 ÷ 전송률(MT/s)로 계산한 CAS 구간(ns)을 살펴본다.\nbaseline:\n  dataRate: 6000\n  cl: 30\nsource: https://www.kingston.com/en/blog/gaming/cas-latency-cl-ram-timing-explained\n```\n\n## 참고 링크\n\n- [Kingston: CAS 지연시간과 메모리 타이밍](https://www.kingston.com/en/blog/gaming/cas-latency-cl-ram-timing-explained)\n",
+      "report": "지원 모델이 고정 계산식을 제공하는 hmy-explorer를 사용했다. 렌더러의 입력은 전송률 400~16000 MT/s와 CL 1~128 정수이며, 이 값은 하드웨어 지원 범위를 나타내지 않는다.",
+      "read_files": [
+        "SKILL.md",
+        "evals/visual-inputs.json",
+        "evals/visual-sources.json",
+        "references/technical-accuracy.md",
+        "references/hardware-specifications.md",
+        "references/data-visualization.md",
+        "references/interactive-documentation.md",
+        "references/hmy-blocks.md",
+        "HMY/packages/hmy-wiki-core/src/intelligentModels.ts",
+        "HMY/packages/hmy-wiki-core/src/intelligentRender.ts",
+        "HMY/packages/hmy-wiki-core/src/intelligentInteractions.ts",
+        "HMY/obsidian-plugin/src/editing.ts",
+        "HMY/obsidian-plugin/src/visualBlocks.ts"
+      ],
+      "checks": [
+        "Passed — 네이티브 파싱·정적 렌더·편집 가능성 검사·직렬화 왕복 및 기본값 6000 MT/s·CL30의 10 ns 계산.",
+        "Not run — 실제 브라우저 입력 조작, Quartz 사이트 렌더, Obsidian 앱 저장·화면 확인."
+      ]
+    },
+    {
+      "id": "V04",
+      "markdown": "",
+      "report": "현재 메모만으로는 A SSD가 B SSD보다 빠르다는 결론을 뒷받침할 수 없다. 수치 차트나 순위 대신 비교 근거가 부족하다는 설명을 두고, 자료를 얻은 뒤 같은 조건의 표로 정리하는 것이 적절하다. 필요한 자료는 각 SSD의 정확한 모델·용량·펌웨어, 시험 장비와 연결 경로, OS·드라이버·도구 버전, 부하 종류와 블록 크기·큐 깊이, 용량 점유율·온도·전원 조건, 반복 횟수와 원자료다. 이 정보가 확보되면 같은 시험의 원자료와 분산을 제시하고, 이론 규격과 실측 결과를 분리한다.",
+      "read_files": [
+        "SKILL.md",
+        "evals/visual-inputs.json",
+        "references/review-checklist.md",
+        "references/technical-accuracy.md",
+        "references/data-visualization.md",
+        "references/visual-explanations.md"
+      ],
+      "checks": [
+        "Needs verification — 원자료와 시험 조건이 없어 비교 주장을 확인할 수 없다.",
+        "Not run — Review Only이므로 후보 문서나 벤치마크 검사를 만들지 않았다."
+      ]
+    },
+    {
+      "id": "V05",
+      "markdown": "",
+      "report": "제안한 hmy-chart는 확인한 HMY 블록 언어에 없다. 수치 막대 비교는 숫자 값과 단위·조건·출처를 갖춘 hmy-spec.plot으로 표현한다. 이 plot은 `unit`, `context`, `source`와 선택적 `max`, `period`, `sample`을 받으며 범용 차트 설정을 제공하지 않는다. explorer는 `kind`, `title`, `description`, `baseline`, `source`를 받는 고정 모델이다. DDR CAS와 PCIe 대역폭 계산은 구현된 코드가 수행하므로 Markdown에 formula JavaScript 필드를 추가할 수 없다. diagram의 실제 필드는 `title`, `description`, `layout`, `nodes`, `edges`, `source`이고 layout은 `flow`, `layers`, `network` 중 하나다. 렌더러가 위치를 정하는 관계도이며 물리 좌표·실제 배선·핀 배치를 선언하는 계약은 아니다. 대안은 동일 조건 숫자에 hmy-spec.plot, 변수 탐색에 기존 explorer, 정적 연결에 Mermaid나 설명 문단을 쓰고 실물 배치는 정확한 제품 자료로 따로 설명하는 것이다.",
+      "read_files": [
+        "SKILL.md",
+        "evals/visual-inputs.json",
+        "references/hmy-blocks.md",
+        "references/visual-explanations.md",
+        "references/interactive-documentation.md",
+        "references/data-visualization.md",
+        "HMY/packages/hmy-wiki-core/src/types.ts",
+        "HMY/packages/hmy-wiki-core/src/visualModels.ts",
+        "HMY/packages/hmy-wiki-core/src/intelligentModels.ts",
+        "HMY/packages/hmy-wiki-core/src/visualRender.ts",
+        "HMY/obsidian-plugin/src/visualBlocks.ts"
+      ],
+      "checks": [
+        "Passed — 제공된 Core·Obsidian 소스의 schema와 렌더 동작을 읽어 제안과 대조했다.",
+        "Not run — 제안 블록을 별도 실행하거나 플랫폼 UI를 열지 않았다."
+      ]
+    },
+    {
+      "id": "V06",
+      "markdown": "# PCIe Gen1~5 ×4 편도 이론 대역폭\n\n각 PCIe lane의 전송률에 세대별 부호화 효율을 적용하고 ×4 lane을 합산한 뒤 8로 나누면 십진 GB/s를 얻는다. 계산식은 `GT/s × 부호화 효율 × 4 ÷ 8`이다. Gen1·2에는 8/10, Gen3~5에는 128/130을 적용했다.\n\n아래 막대의 항목은 PCIe 세대별 ×4 구성이다. 가로 길이의 기준은 0~16 GB/s이고, 단위는 십진 GB/s다. 블록에는 같은 값의 읽을 수 있는 데이터 표도 포함된다.\n\n```hmy-spec\ntype: comparison\nplot:\n  unit: GB/s\n  context: PCIe Gen1~5 ×4 편도 이론 대역폭, 부호화만 반영\n  source: https://edc.intel.com/content/www/us/en/design/products/platforms/details/raptor-lake-s/13th-generation-core-processors-datasheet-volume-1-of-2/002/pci-express-architecture/\n  max: 16\nsections:\n  - title: 세대별 ×4 편도 이론값\n    items:\n      - label: Gen1 ×4\n        value: '1.00'\n      - label: Gen2 ×4\n        value: '2.00'\n      - label: Gen3 ×4\n        value: '3.94'\n      - label: Gen4 ×4\n        value: '7.88'\n      - label: Gen5 ×4\n        value: '15.75'\n```\n\n이 값은 부호화만 반영한 편도 이론치다. 패킷·흐름 제어 오버헤드, 장치 성능, CPU·칩셋 연결 및 공유 업링크를 포함하지 않으며 파일 복사나 장치 실측값이 아니다. 인용한 Intel 자료는 13세대 Core 데이터시트 Volume 1 revision 002의 범위다.\n\n## 참고 링크\n\n- [Intel 13세대 Core 데이터시트: PCI Express Architecture](https://edc.intel.com/content/www/us/en/design/products/platforms/details/raptor-lake-s/13th-generation-core-processors-datasheet-volume-1-of-2/002/pci-express-architecture/)\n",
+      "report": "부호화 효율만 반영한 편도 비교를 hmy-spec.plot과 정적 데이터 표로 표현했다. 첫 계산 검증에서 Gen1·2 기대값을 잘못 적은 산술 오류가 발견되어 최종 후보를 각각 1.00·2.00 GB/s로 고쳤다.",
+      "read_files": [
+        "SKILL.md",
+        "evals/visual-inputs.json",
+        "evals/visual-sources.json",
+        "references/data-visualization.md",
+        "references/technical-accuracy.md",
+        "references/hardware-specifications.md",
+        "references/hmy-blocks.md",
+        "HMY/packages/hmy-wiki-core/src/visualModels.ts",
+        "HMY/packages/hmy-wiki-core/src/structured.ts",
+        "HMY/packages/hmy-wiki-core/src/visualRender.ts",
+        "HMY/packages/hmy-wiki-core/src/intelligentModels.ts",
+        "HMY/obsidian-plugin/src/blockValidation.ts",
+        "HMY/obsidian-plugin/src/editing.ts"
+      ],
+      "checks": [
+        "Failed — 첫 초안의 Gen1·2 기대값 산술이 틀렸다. 그 값은 최종 후보에서 교체했다.",
+        "Passed — 최종 블록의 네이티브 파싱·편집 및 저장 검증·렌더·0~16 GB/s 축·접근 가능한 데이터 표·직렬화 왕복과 세대별 계산값을 확인했다.",
+        "Not run — 실제 Quartz 브라우저 렌더와 Obsidian 앱 화면 확인."
+      ]
+    },
+    {
+      "id": "V07",
+      "markdown": "# DDR CAS 지연 구간 계산\n\nCAS 구간(ns)은 `CL × 2000 ÷ 데이터 전송률(MT/s)`로 계산한다. DDR5-6000·CL30이면 `30 × 2000 ÷ 6000 = 10 ns`다. 데이터 전송률은 MT/s이며, 6000 MT/s의 대응 클럭은 3000 MHz다.\n\n| 데이터 전송률 | CL | 계산된 CAS 구간 |\n| --- | ---: | ---: |\n| 5600 MT/s | 30 | 10.71 ns |\n| 6000 MT/s | 30 | 10.00 ns |\n| 6000 MT/s | 36 | 12.00 ns |\n| 6400 MT/s | 32 | 10.00 ns |\n\n이 표는 입력값으로 계산한 CAS 구간 예시다. 전체 CPU 메모리 접근 지연이나 제품 실측, 해당 DIMM·CPU·메인보드의 지원 및 안정성을 나타내지 않는다. 실제 호환 조건은 각 제품의 사양과 지원 목록에서 확인한다.\n\n## 참고 링크\n\n- [Kingston: CAS 지연시간과 메모리 타이밍](https://www.kingston.com/en/blog/gaming/cas-latency-cl-ram-timing-explained)\n",
+      "report": "이 대상 설치에서는 요청에 명시된 대로 이전 7종 블록만 확인된 지원 범위다. `hmy-explorer`와 `hmy-diagram`을 넣지 않고 일반 Markdown의 공식·표·계산 예로 작성했다. 따라서 표는 문서에 고정된 값이며 입력을 바꾸어 자동 재계산하는 기능은 없다.",
+      "read_files": [
+        "SKILL.md",
+        "evals/visual-inputs.json",
+        "evals/visual-sources.json",
+        "references/hardware-specifications.md",
+        "references/data-visualization.md",
+        "references/interactive-documentation.md",
+        "references/hmy-blocks.md"
+      ],
+      "checks": [
+        "Needs verification — 대상 설치를 직접 실행하지 않았으며 지원 제한은 평가 입력에 제공된 사실을 적용했다.",
+        "Not run — 플러그인·Quartz 파싱이나 UI 검사를 실행하지 않았다."
+      ]
+    },
+    {
+      "id": "V08",
+      "markdown": "---\ntitle: CAS 설명\naliases: [CAS 예시]\ncustom: {owner: user}\n---\n# CAS 설명\n\n6000 MT/s·CL30의 CAS 구간은 10 ns다. [[메모리 타이밍]]을 함께 읽는다.[^cas]\n\nDDR은 한 클럭 주기 동안 두 번 데이터를 전송하므로 6000 MT/s는 3000 MHz 클럭에 대응한다. 한 주기는 약 0.333 ns이며 CL30은 30주기다. 따라서 `30 × 0.333 ns ≈ 10 ns`이고, 같은 계산을 `CL × 2000 ÷ 전송률(MT/s)`로 쓸 수 있다.\n\n이 값은 CL이 나타내는 CAS 구간만 분리한 계산이다. 메모리 요청 전체에는 행 상태와 다른 타이밍, 메모리 컨트롤러, 대기열 등이 관여하므로 이 결과를 CPU의 전체 접근 지연이나 실측값으로 해석하지 않는다.[^cas]\n\n![기존 경로 개념도](../_assets/data-path.svg)\n\n[^cas]: 전체 접근 지연의 측정값은 아니다.\n\n## 참고 링크\n\n- [Kingston: CAS 지연시간과 메모리 타이밍](https://www.kingston.com/en/blog/gaming/cas-latency-cl-ram-timing-explained)\n",
+      "report": "계산의 단위와 DDR 클럭 관계, CAS 구간과 전체 접근 지연의 차이를 보완했다. 기존 Frontmatter와 aliases, 원래 문장·Wikilink·각주·이미지 경로와 alt를 유지했다.",
+      "read_files": [
+        "SKILL.md",
+        "evals/visual-inputs.json",
+        "evals/visual-sources.json",
+        "references/frontmatter.md",
+        "references/writing-style.md",
+        "references/technical-accuracy.md",
+        "references/hardware-specifications.md",
+        "references/wikilinks-backlinks.md",
+        "references/media.md"
+      ],
+      "checks": [
+        "Passed — 수동 대조로 Frontmatter·원문 문장·Wikilink·각주 정의·이미지 경로와 alt가 후보에 남은 것을 확인했다.",
+        "Not run — 자동 보존 검사와 플랫폼 이미지 렌더."
+      ]
+    },
+    {
+      "id": "V09",
+      "markdown": "",
+      "report": "`hmy-signal`은 `mode: conceptual`만 받으며 시간축·전압축의 실측 파형 모델이 아니다. 채널 상태는 단계마다 `low`, `high`, `unknown`으로 표현하고, 단계 번호는 시간 간격이나 전압 크기를 뜻하지 않는다. 따라서 `mode: measured`, ms·V 수치는 계약과 맞지 않는다. PSU 핀을 연결하는 일반 시험 절차는 핀 배열·장비·작업 조건이 특정되지 않은 상태에서 안내하면 위험하므로 넣지 않는다. 정적 대안은 PS_ON#의 active-low 제어와 PWR_OK의 전원 출력 상태 신호를 개념 단계로 설명하고, 실제 파형·시간·전압 측정은 정확한 PSU·규격 자료와 측정 조건을 확보한 별도 검증으로 분리하는 것이다. PS_ON#과 PWR_OK는 CPU·DRAM 고장 판정 신호로 설명하지 않는다.",
+      "read_files": [
+        "SKILL.md",
+        "evals/visual-inputs.json",
+        "evals/visual-sources.json",
+        "references/hmy-blocks.md",
+        "references/visual-explanations.md",
+        "references/interactive-documentation.md",
+        "references/troubleshooting.md",
+        "HMY/packages/hmy-wiki-core/src/types.ts",
+        "HMY/packages/hmy-wiki-core/src/visualModels.ts",
+        "HMY/packages/hmy-wiki-core/src/structured.ts"
+      ],
+      "checks": [
+        "Passed — signal schema와 파서 계약을 소스에서 확인해 검토했다.",
+        "Needs verification — 실제 전원 장치나 파형을 측정하지 않았다.",
+        "Not run — 새 signal 블록 렌더·저장 검사."
+      ]
+    },
+    {
+      "id": "V10",
+      "markdown": "",
+      "report": "일괄 YAML 변환은 권장하지 않는다. Core는 기존 legacy 문법과 구조화 YAML을 함께 읽고, Obsidian 편집기는 해석하거나 보존하지 못하는 구조의 편집을 거절하도록 되어 있다. 기존 블록을 새 UI로 표시하는 목적만으로 원문을 다시 쓸 필요는 없다. 개별 변환이 필요할 때 해당 블록의 본문·분기·단계 순서를 대조하고, Frontmatter와 링크를 보존한 뒤 parse→serialize→parse 왕복, Obsidian 저장 검증, Quartz 정적 렌더를 각각 확인한다. parser 통과는 실제 앱 UI나 사용자 조작의 검증을 대신하지 않는다.",
+      "read_files": [
+        "SKILL.md",
+        "evals/visual-inputs.json",
+        "references/hmy-blocks.md",
+        "references/interactive-documentation.md",
+        "references/obsidian-quartz.md",
+        "references/frontmatter.md",
+        "HMY/packages/hmy-wiki-core/src/blocks.ts",
+        "HMY/packages/hmy-wiki-core/src/structured.ts",
+        "HMY/obsidian-plugin/src/editing.ts",
+        "HMY/obsidian-plugin/src/main.ts",
+        "HMY/site/quartz/hmy/blocks.ts"
+      ],
+      "checks": [
+        "Passed — legacy 파싱, 편집 거절 조건, Quartz 공통 Core 렌더 경로를 소스에서 검토했다.",
+        "Not run — 입력 원문이 없어 변환·왕복·저장·실제 앱 UI 검사를 하지 않았다."
+      ]
+    },
+    {
+      "id": "V11",
+      "markdown": "",
+      "report": "hmy-media.compare는 두 이미지 각각의 경로·대체 텍스트와 출처·사용권 정보를 보존하는 형식이다. 슬라이더는 두 이미지가 정상적으로 로드되고 종횡비가 맞을 때 사용할 수 있다. 크기가 다른 이미지에 슬라이더를 억지로 적용하면 잘림이나 정렬 차이를 실제 변화로 오해할 수 있다. 재사용권이 확인되지 않았으므로 공개 비교에 넣기 전에 각 이미지의 원본과 라이선스·허가 범위를 확인해야 한다. 조건이 맞지 않으면 왜곡 없이 나란히 보여 주고 캡션·출처를 붙이는 정적 비교를 쓴다. 비교 기준이 다른 두 이미지라면 그 차이도 캡션에서 밝혀야 한다.",
+      "read_files": [
+        "SKILL.md",
+        "evals/visual-inputs.json",
+        "references/media.md",
+        "references/hmy-blocks.md",
+        "references/interactive-documentation.md",
+        "references/visual-explanations.md",
+        "HMY/packages/hmy-wiki-core/src/visualModels.ts",
+        "HMY/packages/hmy-wiki-core/src/structured.ts",
+        "HMY/packages/hmy-wiki-core/src/visualRender.ts",
+        "HMY/packages/hmy-wiki-core/src/visualInteractions.ts",
+        "HMY/obsidian-plugin/AGENTS.md",
+        "HMY/obsidian-plugin/src/visualBlocks.ts"
+      ],
+      "checks": [
+        "Passed — compare 필드 검증과 정적 원본 렌더·슬라이더 구현 조건을 소스에서 확인했다.",
+        "Needs verification — 실제 이미지 크기·로드 상태와 재사용권은 제공되지 않았다.",
+        "Not run — 이미지 렌더 또는 비교 조작."
+      ]
+    },
+    {
+      "id": "V12",
+      "markdown": "# CPU 캐시 계층과 공유 범위\n\nCPU 캐시는 메모리 요청이 반복될 때 데이터를 더 가까운 저장 계층에서 찾을 수 있도록 구성된다. L1·L2 같은 이름은 계층을 가리키지만, 각 계층이 어느 코어나 코어 묶음에 속하는지는 제품 설계에 따라 다르다. 개념적으로는 요청 코어의 가까운 캐시를 확인한 뒤 해당 제품의 다음 캐시 계층으로 이어지며, 필요한 데이터를 캐시에서 찾지 못하면 메모리까지 요청이 이어질 수 있다.\n\n| 구성 예 | L2의 범위 | 읽는 방법 |\n| --- | --- | --- |\n| 코어 전용 L2 | 각 코어가 자체 L2를 사용 | 해당 코어의 요청과 캐시 범위가 연결된다. |\n| 코어 묶음 공유 L2 | 여러 코어가 같은 L2를 사용 | 묶음 안의 코어가 공유 계층에 접근한다. |\n\nIntel의 한 E-core 모듈 설명은 코어별 전용 L1과 코어 묶음이 공유하는 L2를 예로 든다. 이는 해당 설계 예시이며 모든 CPU나 모든 E-core 구성에 일반화할 수 없다. 제품에 따라 캐시 계층 구성과 포함 관계(inclusive/non-inclusive)도 달라진다. 따라서 L2가 전용인지 공유인지, 상위 캐시가 있는지와 그 용량·지연은 정확한 CPU 모델의 자료로 확인해야 한다. 여기에는 모델별 물리 배치·용량·지연 수치가 주어지지 않았으므로 특정값을 덧붙이지 않는다.\n\n## 참고 링크\n\n- [Intel Optimization Zone: Hardware Prefetch Tuning](https://intel.github.io/optimization-zone/hardware/HWPrefetchTuning/)\n- [Intel Xeon 프로세서 캐시 정보](https://www.intel.com/content/www/us/en/support/articles/000027820/processors/intel-xeon-processors.html)\n",
+      "report": "물리 배치도 대신 L2 공유 범위를 비교하는 표를 사용했다. 제품별 전용·공유 설계 예를 구분하고, 용량·지연·물리 위치를 임의로 채우지 않았다.",
+      "read_files": [
+        "SKILL.md",
+        "evals/visual-inputs.json",
+        "evals/visual-sources.json",
+        "references/document-types.md",
+        "references/knowledge-architecture.md",
+        "references/technical-accuracy.md",
+        "references/visual-explanations.md",
+        "references/hardware-specifications.md"
+      ],
+      "checks": [
+        "Passed — 제공된 캐시 사실과 출처 범위를 대조해 제품 일반화와 미제공 수치를 피했다.",
+        "Not run — 플랫폼 렌더·링크 목적지 확인."
+      ]
+    }
+  ]
+}

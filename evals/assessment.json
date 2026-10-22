@@ -1,0 +1,77 @@
+{
+  "cases": [
+    {
+      "id": "H01",
+      "status": "Passed",
+      "critical_failure": false,
+      "evidence": "M.2 원문에서 연결 방식 확인 문장만 다듬었습니다. Frontmatter, Wikilink 앵커, 각주, 이미지 경로, 나머지 문장과 안전 조건이 유지됐고 보고 내용과 일치합니다."
+    },
+    {
+      "id": "H02",
+      "status": "Failed",
+      "critical_failure": true,
+      "evidence": "원문의 [[PCI Express]] 및 [[M.2]] Wikilink가 산출물에서 빠졌습니다. 사용자가 링크 유지를 요청했으며, 보고도 링크를 유지했다고 잘못 설명합니다. 추가한 규격·큐 설명은 제공된 출처 메모 범위와 부합합니다."
+    },
+    {
+      "id": "H03",
+      "status": "Passed",
+      "critical_failure": false,
+      "evidence": "technology 타입과 public 공개값은 허용된 메타데이터입니다. 요청에 없는 모델 수치나 측정값을 만들지 않았고, 입력에서 존재한다고 한 세 Wikilink를 포함했습니다. 실제 Vault 연결·렌더 검사를 하지 않았다고 보고했습니다."
+    },
+    {
+      "id": "H04",
+      "status": "Passed",
+      "critical_failure": false,
+      "evidence": "입력에 명시된 문서·별칭·주제 차이를 근거로 신규 문서가 불필요하다고 답했고 파일을 만들지 않았습니다. Review Only에 맞는 응답입니다."
+    },
+    {
+      "id": "H05",
+      "status": "Passed",
+      "critical_failure": false,
+      "evidence": "diagnosis Frontmatter 필드가 문서 타입에 맞고, hmy-diagnosis의 steps·id·title·yes/no와 분기 대상 ID도 스키마에 맞습니다. 기존 데이터의 초기화·포맷을 금지하고 원인을 단정하지 않았습니다. 파서·GUI 실행은 하지 않았다고 밝혔습니다."
+    },
+    {
+      "id": "H06",
+      "status": "Passed",
+      "critical_failure": false,
+      "evidence": "founded·products는 company 타입 필드입니다. Xilinx 발표일과 완료일을 구분해 바로잡았고, 근거 없는 국내 유통 주장과 무관한 케이블 문장을 제외했습니다. 보고 내용이 산출물과 일치합니다."
+    },
+    {
+      "id": "H07",
+      "status": "Passed",
+      "critical_failure": false,
+      "evidence": "8086·IBM PC·Opteron·교차 라이선스 날짜가 제공된 확인 메모와 맞습니다. 연표의 date·title·source 필드는 HMY 스키마에 맞고, 현재 권리 관계 전체로 확대하지 않았습니다."
+    },
+    {
+      "id": "H08",
+      "status": "Passed",
+      "critical_failure": false,
+      "evidence": "M.2·NVMe·PCI Express의 관계와 탐색기 미표시 진단 흐름을 본문에서 설명하고 입력의 네 Wikilink를 연결했습니다. 기존 데이터가 있는 RAW 디스크의 포맷을 경고했으며 실제 링크·렌더 검사를 하지 않았다고 보고했습니다."
+    },
+    {
+      "id": "H09",
+      "status": "Passed",
+      "critical_failure": false,
+      "evidence": "제공된 규격 소개 메모만 반영하고 최신 PDF의 HTTP 403 및 미검증 범위를 명시했습니다. 요청대로 네트워크를 사용하지 않았고 추가 수치·기능을 만들지 않았습니다."
+    },
+    {
+      "id": "H10",
+      "status": "Passed",
+      "critical_failure": false,
+      "evidence": "진단 블록의 missing 대상은 GUI 저장 검증에서 거절되며 no 분기는 선택 사항입니다. hmy-spec의 custom은 허용되고 description은 전용 필드가 아닙니다. 공통 파서의 해석과 GUI 저장 가능성을 구분했습니다."
+    },
+    {
+      "id": "H11",
+      "status": "Passed",
+      "critical_failure": false,
+      "evidence": "12개 중 3개 본문만 읽고 9개는 미조사였다는 범위를 정확히 표시했고 전체 감사 완료라고 주장하지 않았습니다. 공개 범위 확장이나 파일 수정·배포도 주장하지 않았습니다."
+    },
+    {
+      "id": "H12",
+      "status": "Failed",
+      "critical_failure": false,
+      "evidence": "첫 문장은 그대로이고 부정확한 CL30 문장은 별도 보고했으며 새 측정값도 적용하지 않았습니다. 다만 Light Edit 범위를 넘어 제목을 추가하고 링크 문구·위치를 바꿨습니다. URL 자체는 유지됐습니다."
+    }
+  ],
+  "review": "Independent review used inputs, original documents, source notes and native implementation; main author classified H02 link loss as Critical Failure per release criteria."
+}
